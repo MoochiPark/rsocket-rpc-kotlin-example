@@ -1,0 +1,15 @@
+syntax = "proto3";
+
+package io.wisoft.test;
+
+message Request {
+  string message = 1;
+}
+
+message Response {
+  string message = 1;
+}
+
+service TestService {
+  rpc RequestResponse (Request) returns (Response) {}
+}
