@@ -3,7 +3,8 @@ import com.google.protobuf.gradle.*
 plugins {
     application
     idea
-    kotlin("plugin.serialization") version "1.4.32"
+    kotlin("plugin.serialization") version "1.6.21"
+    kotlin("plugin.spring") version "1.6.21"
 }
 
 apply(plugin = "com.google.protobuf")
@@ -16,6 +17,7 @@ dependencies {
 
     implementation("io.rsocket.rpc.kotlin:rsocket-rpc-core:0.2.13")
 
+    implementation("io.rsocket.kotlin:rsocket-transport-netty:0.9.6")
     implementation("org.springframework.boot:spring-boot-starter-rsocket:2.6.7")
 
     implementation("ch.qos.logback:logback-classic:1.2.11")
