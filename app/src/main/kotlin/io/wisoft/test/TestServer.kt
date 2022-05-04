@@ -18,6 +18,7 @@ fun main() {
                     TestServiceServer(ServerAcceptor(TestServiceClient(rSocket)))
                 )
             }
+//        }.transport(TcpServerTransport.create("localhost", 9000))
         }.transport(TcpServerTransport.create("localhost", 9000))
         .start()
         .timeout(5, TimeUnit.SECONDS)
@@ -27,7 +28,7 @@ fun main() {
     val rSocket = RSocketFactory
         .connect()
         .acceptor { { RequestHandlingRSocket(TestServiceServer(ClientAcceptor())) } }
-        .transport(TcpClientTransport.create("localhost", 9000))
+        .transport(TcpClientTransport.create(context.address()))
         .start()
         .timeout(5, TimeUnit.SECONDS)
         .blockingGet()

@@ -10,21 +10,16 @@ apply(plugin = "com.google.protobuf")
 
 dependencies {
     protobuf(project(":protos"))
-    implementation("io.rsocket.rpc.kotlin:rsocket-rpc-core:0.2.13")
     api("com.google.protobuf:protobuf-java-util:3.20.1")
 
-    implementation("io.rsocket.kotlin:rsocket-transport-netty:0.9.6")
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.6.1")
 
-    implementation("io.ktor:ktor-server-core:2.0.1")
-    implementation("io.ktor:ktor-server-netty:2.0.1")
-    implementation("io.ktor:ktor-server-content-negotiation:2.0.1")
-    implementation("io.ktor:ktor-serialization:2.0.1")
-    implementation("io.ktor:ktor-serialization-kotlinx-json:2.0.1")
+    implementation("io.rsocket.rpc.kotlin:rsocket-rpc-core:0.2.13")
 
-    testImplementation("io.ktor:ktor-server-tests:2.0.1")
+    implementation("org.springframework.boot:spring-boot-starter-rsocket:2.6.7")
 
     implementation("ch.qos.logback:logback-classic:1.2.11")
+
 }
 
 protobuf {

@@ -1,0 +1,16 @@
+syntax = "proto3";
+
+package io.wisoft.test;
+
+message PaymentRequest {
+  int64 userId = 1;
+  int64 productId = 2;
+}
+
+message PaymentResponse {
+  bool isSuccess = 1;
+}
+
+service PaymentService {
+  rpc RequestResponse (PaymentRequest) returns (PaymentResponse) {}
+}
