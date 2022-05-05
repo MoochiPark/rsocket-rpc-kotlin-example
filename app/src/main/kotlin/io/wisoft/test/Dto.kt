@@ -12,3 +12,11 @@ object Request {
 
 }
 
+object Response {
+
+    @Serializable
+    data class Result(
+        val message: String,
+    )
+
+}

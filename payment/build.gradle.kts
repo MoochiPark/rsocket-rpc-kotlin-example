@@ -19,6 +19,10 @@ dependencies {
 
     implementation("io.rsocket.kotlin:rsocket-transport-netty:0.9.6")
     implementation("org.springframework.boot:spring-boot-starter-rsocket:2.6.7")
+    implementation("org.springframework.boot:spring-boot-starter-webflux:2.6.7")
+    implementation("io.ktor:ktor-server-core:2.0.1")
+    implementation("io.ktor:ktor-server-netty:2.0.1")
+
 
     implementation("ch.qos.logback:logback-classic:1.2.11")
 

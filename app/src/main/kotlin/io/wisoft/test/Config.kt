@@ -1,30 +1,26 @@
-package io.wisoft.payment
+package io.wisoft.test
 
 import io.netty.buffer.ByteBuf
 import io.reactivex.Single
-import io.reactivex.disposables.Disposable
+import io.rsocket.kotlin.Duration
+import io.rsocket.kotlin.KeepAliveOptions
 import io.rsocket.kotlin.RSocket
 import io.rsocket.kotlin.RSocketFactory
 import io.rsocket.kotlin.transport.netty.client.TcpClientTransport
-import io.rsocket.kotlin.transport.netty.server.TcpServerTransport
 import io.rsocket.rpc.kotlin.rsocket.RequestHandlingRSocket
-import io.wisoft.test.Payment
-import io.wisoft.test.PaymentService
-import io.wisoft.test.PaymentServiceClient
-import io.wisoft.test.PaymentServiceServer
-import io.wisoft.test.Test
-import io.wisoft.test.TestService
-import io.wisoft.test.TestServiceClient
-import io.wisoft.test.TestServiceServer
 import java.util.concurrent.TimeUnit
 
 fun rSocket(): RSocket = RSocketFactory
     .connect()
+//    .keepAlive { it.keepAliveInterval(Duration.ofSeconds(5)) }
     .acceptor { { RequestHandlingRSocket(PaymentServiceServer(ClientAcceptor())) } }
     .transport(TcpClientTransport.create("localhost", 7000))
     .start()
-//    .timeout(5, TimeUnit.SECONDS)
+    .timeout(5, TimeUnit.SECONDS)
     .blockingGet()
+
+fun paymentClient(rSocket: RSocket): PaymentServiceClient = PaymentServiceClient(rSocket)
+
 
 class ServerAcceptor(private val paymentServiceClient: PaymentServiceClient) : PaymentService {
 

@@ -22,7 +22,10 @@ dependencies {
     implementation("io.ktor:ktor-serialization:2.0.1")
     implementation("io.ktor:ktor-serialization-kotlinx-json:2.0.1")
 
-    testImplementation("io.ktor:ktor-server-tests:2.0.1")
+    implementation("org.apache.httpcomponents:httpclient:4.5.13")
+    implementation("org.jfree:jcommon:1.0.24")
+    implementation("org.jfree:jfreechart:1.5.3")
+    implementation("org.apache.commons:commons-math3:3.6")
 
     implementation("ch.qos.logback:logback-classic:1.2.11")
 }
